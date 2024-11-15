@@ -24,3 +24,19 @@ export const SearchSchema = z.object({
         .trim()
         .min(1, { message: "Search is required" })
 })
+
+export const ProductSchema = z.object({
+    name: z.string()
+        .trim()
+        .min(1, { message: 'Name is required' }),
+    price: z.string()
+        .trim()
+        .transform((value) => parseFloat(value))
+        .refine((value) => value > 0, { message: 'Invalid price' })
+        .or(z.number().min(1, { message: 'Category is required' })),
+    categoryId: z.string()
+        .trim()
+        .transform((value) => parseInt(value))
+        .refine((value) => value > 0, { message: 'Category is required' })
+        .or(z.number().min(1, { message: 'Category is required' })),
+})
