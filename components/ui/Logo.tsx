@@ -8,6 +8,7 @@ export default function Logo() {
                     src="/logo.svg"
                     alt="Logo"
                     fill
+                    priority
                 />
             </div>
         </div>

@@ -39,4 +39,6 @@ export const ProductSchema = z.object({
         .transform((value) => parseInt(value))
         .refine((value) => value > 0, { message: 'Category is required' })
         .or(z.number().min(1, { message: 'Category is required' })),
+    image: z.string()
+        .min(1, { message: 'Image is required' }),
 })
